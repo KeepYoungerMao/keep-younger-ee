@@ -7,15 +7,15 @@ import java.lang.reflect.Method;
  * @author mao by 14:58 2020/1/15
  */
 public class WebRequestMethod {
-    private String pattern;
+    private String[] pattern;
     private Method method;
-    private String[] methodType;
+    private HttpMethod[] methodType;
 
-    public String getPattern() {
+    public String[] getPattern() {
         return pattern;
     }
 
-    public void setPattern(String pattern) {
+    public void setPattern(String[] pattern) {
         this.pattern = pattern;
     }
 
@@ -27,11 +27,11 @@ public class WebRequestMethod {
         this.method = method;
     }
 
-    public String[] getMethodType() {
+    public HttpMethod[] getMethodType() {
         return methodType;
     }
 
-    public void setMethodType(String[] methodType) {
+    public void setMethodType(HttpMethod[] methodType) {
         this.methodType = methodType;
     }
 }

@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+keep-younger-ee.iml
+out/
+web/WEB-INF/classes

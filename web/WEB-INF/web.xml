@@ -10,6 +10,16 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- init handler mapping -->
+    <context-param>
+        <param-name>MethodHandlerMapping</param-name>
+        <param-value>com.mao.servlet.handler.HttpMethodHandlerMapping</param-value>
+    </context-param>
+    <context-param>
+        <param-name>PacketScan</param-name>
+        <param-value>com.mao</param-value>
+    </context-param>
+
     <!-- servlet -->
     <servlet>
         <servlet-name>TestServlet</servlet-name>
