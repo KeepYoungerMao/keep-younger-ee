@@ -4,6 +4,7 @@ import com.mao.servlet.annotation.ServletMapping;
 import com.mao.servlet.annotation.Web;
 import com.mao.servlet.handler.WebRequestMethod;
 import com.mao.servlet.handler.WebRequestServlet;
+import com.mao.util.SU;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ClassHandlerMappingScanner extends ClassScanner {
         } else {
             String[] value = servletMapping.value();
             String _value = value[0];
-            servlet.setPattern(_value.startsWith("/") ? _value : "/"+_value);
+            servlet.setPattern(transClassPattern(_value));
         }
         //设置类
         servlet.setServlet(clazz);
@@ -48,6 +49,17 @@ public class ClassHandlerMappingScanner extends ClassScanner {
             servlet.setMethods(_methods);
         } else servlet.setMethods(null);
         return servlet;
+    }
+
+    /**
+     * 路径补全
+     * @param path 路径
+     * @return 补全路径
+     */
+    private String transClassPattern(String path){
+        if (SU.isNotEmpty(path))
+            return path.startsWith("/") ? path : "/"+path;
+        return "";
     }
 
 }

@@ -13,6 +13,6 @@
 </head>
 <body>
     <h2>INDEX PAGE</h2>
-    <p><a href="template/test2.jsp">test2</a></p>
+    <p><a href="/v/test.mao">test2</a></p>
 </body>
 </html>

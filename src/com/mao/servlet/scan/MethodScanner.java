@@ -12,9 +12,19 @@ import java.util.List;
  */
 public abstract class MethodScanner {
 
+    /**
+     * 处理找到的方法
+     * @param method method
+     * @return WebRequestMethod
+     */
     public abstract WebRequestMethod dealMethod(Method method);
 
-    public List<WebRequestMethod> scanClass(Class<?> clazz){
+    /**
+     * 扫描类，获取类中方法
+     * @param clazz class
+     * @return WebRequestMethod集合
+     */
+    List<WebRequestMethod> scanClass(Class<?> clazz){
         List<WebRequestMethod> methods = new ArrayList<>();
         Method[] _methods = clazz.getDeclaredMethods();
         if (_methods.length > 0){

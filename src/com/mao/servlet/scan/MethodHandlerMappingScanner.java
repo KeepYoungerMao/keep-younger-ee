@@ -3,6 +3,7 @@ package com.mao.servlet.scan;
 import com.mao.servlet.annotation.*;
 import com.mao.servlet.handler.HttpMethod;
 import com.mao.servlet.handler.WebRequestMethod;
+import com.mao.util.SU;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -30,12 +31,30 @@ public class MethodHandlerMappingScanner extends MethodScanner {
         if (annotations.size() > 0){
             Annotation annotation = annotations.get(0);
             WebRequestMethod _method = new WebRequestMethod();
-            _method.setPattern(annotation.getPath());
+            _method.setPattern(transMethodPattern(annotation.getPath()));
             _method.setMethod(method);
             _method.setMethodType(annotation.getType());
             return _method;
         }
         return null;
+    }
+
+    /**
+     * 给方法上的路径补全"/"
+     * @param path 路径
+     * @return String[]
+     */
+    private String[] transMethodPattern(String[] path){
+        int len = path.length;
+        //annotation有默认路径：""
+        String[] pattern = new String[len];
+        for (int i = 0; i < path.length; i++) {
+            if (SU.isEmpty(path[i]))
+                pattern[i] = "";
+            else
+                pattern[i] = path[i].startsWith("/") ? path[i] : "/"+path[i];
+        }
+        return pattern;
     }
 
     /**
